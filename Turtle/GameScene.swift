@@ -8,7 +8,9 @@
 
 import SpriteKit
 
-let spriteSize = 64
+let SPRITE_SIZE = 64
+let FONT_NAME = "Courier"
+let FONT_SIZE = CGFloat(SPRITE_SIZE - 4)
 
 typealias GameLayer = CGFloat
 let FIELD_LAYER: GameLayer = 0
@@ -21,7 +23,7 @@ let BANNER_CONTENT_LAYER: GameLayer = 4
 
 class GameScene: SKScene {
 
-    let pool = SpritePool(size: spriteSize)
+    let pool = SpritePool(size: SPRITE_SIZE)
     private var scoreboard: Scoreboard!
     private var field: SKCropNode!
     private var level: Level!
@@ -64,9 +66,9 @@ class GameScene: SKScene {
 
     private func initField() {
         let x = CGFloat(0)
-        let y = CGFloat(spriteSize)
+        let y = CGFloat(SPRITE_SIZE)
         let width = CGRectGetWidth(self.frame)
-        let height = CGRectGetHeight(self.frame) - CGFloat(spriteSize)
+        let height = CGRectGetHeight(self.frame) - CGFloat(SPRITE_SIZE)
         let node = SKShapeNode(rect: CGRect(x: x, y: y, width: width, height: height))
         node.fillColor = NSColor(calibratedRed: 0.4, green: 0.5, blue: 0.9, alpha: 1)
         field = SKCropNode()
@@ -87,17 +89,17 @@ class GameScene: SKScene {
     private func render() {
         let width = Int(CGRectGetWidth(self.frame))
         let height = Int(CGRectGetHeight(self.frame))
-        let viewWidth = (width + spriteSize - 1) / spriteSize
-        let viewHeight = (height + spriteSize - 1) / spriteSize
+        let viewWidth = (width + SPRITE_SIZE - 1) / SPRITE_SIZE
+        let viewHeight = (height + SPRITE_SIZE - 1) / SPRITE_SIZE
 
         // Keep X centered around the player.
-        viewx = player.posx - spriteSize * viewWidth / 2 + spriteSize
+        viewx = player.posx - SPRITE_SIZE * viewWidth / 2 + SPRITE_SIZE
         viewx = max(0, viewx)
 
         // Keep Y the same unless the player moves more than half way
         // up the view or if the player goes down.
-        let maxy = player.posy - spriteSize * (viewHeight - 9)
-        let miny = player.posy - spriteSize * (viewHeight - 4)
+        let maxy = player.posy - SPRITE_SIZE * (viewHeight - 9)
+        let miny = player.posy - SPRITE_SIZE * (viewHeight - 4)
         if basey == 0 {
             basey = miny
         }
@@ -121,8 +123,8 @@ class GameScene: SKScene {
     }
 
     private func renderCell(x: Int, _ y: Int) {
-        let cellx = x + (viewx / spriteSize)
-        let celly = y + (viewy / spriteSize)
+        let cellx = x + (viewx / SPRITE_SIZE)
+        let celly = y + (viewy / SPRITE_SIZE)
         let c = level!.get(cellx, celly)
         if c == Cell.space {
             return
@@ -130,8 +132,8 @@ class GameScene: SKScene {
         let sprite = pool.get(c)
         if sprite != nil {
             let height = Int(CGRectGetHeight(self.frame))
-            let posx = (x * spriteSize) + spriteSize - (viewx % spriteSize)
-            let posy = height - (y * spriteSize) + (viewy % spriteSize)
+            let posx = (x * SPRITE_SIZE) + SPRITE_SIZE - (viewx % SPRITE_SIZE)
+            let posy = height - (y * SPRITE_SIZE) + (viewy % SPRITE_SIZE)
             sprite!.position = CGPoint(x: posx, y: posy)
             field.addChild(sprite!)
         }
@@ -139,7 +141,7 @@ class GameScene: SKScene {
 
     func renderAgent(agent: Agent) {
         let height = Int(CGRectGetHeight(self.frame))
-        let posx = agent.posx - viewx + spriteSize
+        let posx = agent.posx - viewx + SPRITE_SIZE
         let posy = height - (agent.posy - viewy)
         let sprite = agent.sprite()
         sprite.position = CGPoint(x: posx, y: posy)

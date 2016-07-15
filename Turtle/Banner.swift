@@ -8,14 +8,13 @@
 
 import SpriteKit
 
-
 class Banner: SKShapeNode {
 
     init(scene: GameScene) {
         super.init()
 
         let width = 2 * CGRectGetWidth(scene.frame) / 3
-        let height = CGFloat(spriteSize * 2)
+        let height = CGFloat(SPRITE_SIZE * 2)
         let x = CGRectGetWidth(scene.frame) / 2 - width / 2
         let y = CGRectGetHeight(scene.frame) / 2 - height / 2
         let rect = CGRect(x: x, y: y, width: width, height: height)
@@ -46,15 +45,15 @@ class CountDownBanner: Banner {
         let width = CGRectGetWidth(self.frame)
         let x = CGRectGetMinX(self.frame)
         let y = CGRectGetMinY(self.frame)
-        let rect = CGRect(x: x, y: y, width: width, height: CGFloat(spriteSize / 8))
+        let rect = CGRect(x: x, y: y, width: width, height: CGFloat(SPRITE_SIZE / 8))
         bar.path = CGPathCreateWithRect(rect, nil)
         bar.fillColor = SKColor.greenColor()
         bar.zPosition = BANNER_CONTENT_LAYER
         label.text = text
         label.fontColor = SKColor.whiteColor()
-        label.fontSize = CGFloat(spriteSize)
-        label.fontName = "Courier"
-        label.position = CGPoint(x: x + width / 2, y: y + CGFloat(spriteSize))
+        label.fontSize = FONT_SIZE
+        label.fontName = FONT_NAME
+        label.position = CGPoint(x: x + width / 2, y: y + CGFloat(SPRITE_SIZE))
         label.zPosition = BANNER_CONTENT_LAYER
         addChild(label)
         addChild(bar)
@@ -72,7 +71,7 @@ class CountDownBanner: Banner {
             let y = CGRectGetMinY(self.frame)
             let rect = CGRect(x: x, y: y,
                               width: CGFloat(width * counter / LevelBanner.counterStart),
-                              height: CGFloat(spriteSize / 8))
+                              height: CGFloat(SPRITE_SIZE / 8))
             bar.path = CGPathCreateWithRect(rect, nil)
             return true
         } else {
@@ -99,9 +98,9 @@ class GameOverBanner: Banner {
         let y = CGRectGetMinY(self.frame)
         let label = SKLabelNode(text: "Game Over")
         label.fontColor = SKColor.whiteColor()
-        label.fontSize = CGFloat(spriteSize)
-        label.fontName = "Courier"
-        label.position = CGPoint(x: x + width / 2, y: y + CGFloat(spriteSize))
+        label.fontSize = FONT_SIZE
+        label.fontName = FONT_NAME
+        label.position = CGPoint(x: x + width / 2, y: y + CGFloat(SPRITE_SIZE))
         label.zPosition = BANNER_CONTENT_LAYER
         addChild(label)
     }

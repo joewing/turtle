@@ -17,46 +17,46 @@ class Scoreboard: SKShapeNode {
     init(scene: GameScene) {
         super.init()
         let width = CGRectGetWidth(scene.frame)
-        let height = CGFloat(spriteSize)
+        let height = CGFloat(SPRITE_SIZE)
         let rect = CGRect(x: 0, y: 0, width: width, height: height)
         path = CGPathCreateWithRect(rect, nil)
         fillColor = SKColor.blackColor()
         zPosition = SCOREBOARD_BASE_LAYER
 
-        var x = spriteSize / 2
-        let y = spriteSize / 2
+        var x = SPRITE_SIZE / 2
+        let y = SPRITE_SIZE / 2
         let tomatoSprite = scene.pool.get(Cell.tomato)!
         tomatoSprite.position = CGPoint(x: x, y: y)
         tomatoSprite.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(tomatoSprite)
-        x += spriteSize + 8
+        x += SPRITE_SIZE + 8
 
         starCount.position = CGPoint(x: x, y: 8)
         starCount.fontColor = SKColor.whiteColor()
-        starCount.fontSize = CGFloat(spriteSize - 4)
-        starCount.fontName = "Courier"
+        starCount.fontSize = FONT_SIZE
+        starCount.fontName = FONT_NAME
         starCount.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(starCount)
-        x += spriteSize * 2
+        x += SPRITE_SIZE * 2
 
         let livesSprite = scene.pool.get(Cell.player)!
         livesSprite.position = CGPoint(x: x, y: y)
         livesSprite.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(livesSprite)
-        x += spriteSize + 8
+        x += SPRITE_SIZE + 8
 
         lives.position = CGPoint(x: x, y: 8)
         lives.fontColor = SKColor.whiteColor()
-        lives.fontSize = CGFloat(spriteSize - 4)
-        lives.fontName = "Courier"
+        lives.fontSize = FONT_SIZE
+        lives.fontName = FONT_NAME
         lives.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(lives)
-        x += spriteSize * 2
+        x += SPRITE_SIZE * 2
 
         timer.position = CGPoint(x: x, y: 8)
         timer.fontColor = SKColor.whiteColor()
-        timer.fontSize = CGFloat(spriteSize - 4)
-        timer.fontName = "Courier"
+        timer.fontSize = FONT_SIZE
+        timer.fontName = FONT_NAME
         timer.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(timer)
     }

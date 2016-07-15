@@ -29,7 +29,7 @@ class Agent {
         for name in imageNames {
             let node = SKSpriteNode(imageNamed: name)
             node.xScale = 1
-            node.size = CGSize(width: spriteSize, height: spriteSize)
+            node.size = CGSize(width: SPRITE_SIZE, height: SPRITE_SIZE)
             node.zPosition = 2
             sprites.append(node)
         }
@@ -51,9 +51,9 @@ class Agent {
 
     final func jump() {
         // Must be on the ground to jump.
-        let absx1 = posx / spriteSize
-        let absx2 = (posx + spriteSize - 1) / spriteSize
-        let absy = (posy / spriteSize) + 1
+        let absx1 = posx / SPRITE_SIZE
+        let absx2 = (posx + SPRITE_SIZE - 1) / SPRITE_SIZE
+        let absy = (posy / SPRITE_SIZE) + 1
         let t1 = level.get(absx1, absy)
         let t2 = level.get(absx2, absy)
         if t1 != Cell.space || t2 != Cell.space {
@@ -80,10 +80,10 @@ class Agent {
                 prevSprite()
             }
             let nextx = posx + vx
-            let offsetx = vx > 0 ? spriteSize - 1 : 0
-            let absx = (nextx + offsetx) / spriteSize
-            let absy1 = posy / spriteSize
-            let absy2 = (posy + spriteSize - 1) / spriteSize
+            let offsetx = vx > 0 ? SPRITE_SIZE - 1 : 0
+            let absx = (nextx + offsetx) / SPRITE_SIZE
+            let absy1 = posy / SPRITE_SIZE
+            let absy2 = (posy + SPRITE_SIZE - 1) / SPRITE_SIZE
             let t1 = level.get(absx, absy1)
             let t2 = level.get(absx, absy2)
             if !level.isWall(t1) && !level.isWall(t2) {
@@ -102,12 +102,12 @@ class Agent {
 
     private func updatey(scene: GameScene) -> Bool {
         var moved = false
-        let absx1 = posx / spriteSize
-        let absx2 = (posx + spriteSize - 1) / spriteSize
+        let absx1 = posx / SPRITE_SIZE
+        let absx2 = (posx + SPRITE_SIZE - 1) / SPRITE_SIZE
         if jumpCounter > 0 {
             // Jumping
             let nexty = posy - speedy
-            let absy = nexty / spriteSize
+            let absy = nexty / SPRITE_SIZE
             let t1 = level.get(absx1, absy)
             let t2 = level.get(absx2, absy)
             if !level.isWall(t1) && !level.isWall(t2) {
@@ -128,7 +128,7 @@ class Agent {
         } else {
             // Falling
             let nexty = posy + speedy
-            let absy = (nexty + spriteSize - 1) / spriteSize
+            let absy = (nexty + SPRITE_SIZE - 1) / SPRITE_SIZE
             let t1 = level.get(absx1, absy)
             let t2 = level.get(absx2, absy)
             if !level.isWall(t1) && !level.isWall(t2) {

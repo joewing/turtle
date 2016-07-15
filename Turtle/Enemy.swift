@@ -15,8 +15,8 @@ class Enemy: Agent {
 
     init(level: Level, player: Player, x: Int, y: Int) {
         self.player = player
-        let posx = x * spriteSize
-        let posy = y * spriteSize
+        let posx = x * SPRITE_SIZE
+        let posy = y * SPRITE_SIZE
         super.init(level: level, imageNames:["ghost"], posx: posx, posy: posy)
     }
 
@@ -33,8 +33,8 @@ class Enemy: Agent {
             direction = -direction
             move(direction)
         }
-        let rect1 = CGRect(x: posx, y: posy, width: spriteSize, height: spriteSize)
-        let rect2 = CGRect(x: player.posx, y: player.posy, width: spriteSize, height: spriteSize)
+        let rect1 = CGRect(x: posx, y: posy, width: SPRITE_SIZE, height: SPRITE_SIZE)
+        let rect2 = CGRect(x: player.posx, y: player.posy, width: SPRITE_SIZE, height: SPRITE_SIZE)
         if rect1.intersects(rect2) {
             player.kill()
             scene.remove(self)

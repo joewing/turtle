@@ -19,8 +19,8 @@ class Player: Agent {
 
     init(level: Level) {
         let (x, y) = level.findPlayer()
-        let posx = x * spriteSize
-        let posy = y * spriteSize
+        let posx = x * SPRITE_SIZE
+        let posy = y * SPRITE_SIZE
         startx = posx
         starty = posy
         super.init(level: level, imageNames: imageNames, posx: posx, posy: posy)
