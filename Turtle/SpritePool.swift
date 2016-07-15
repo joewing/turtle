@@ -13,8 +13,9 @@ class SpritePool {
     private let size: Int
     private let nameMap: [Cell: String] = [
         Cell.brick: "brick",
-        Cell.star: "star",
+        Cell.tomato: "tomato",
         Cell.player: "turtle1",
+        Cell.star: "star",
         Cell.tar: "tar",
     ]
 

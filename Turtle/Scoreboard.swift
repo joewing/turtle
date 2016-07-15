@@ -25,11 +25,11 @@ class Scoreboard: SKShapeNode {
 
         var x = spriteSize / 2
         let y = spriteSize / 2
-        let starSprite = scene.pool.get(Cell.star)!
-        starSprite.position = CGPoint(x: x, y: y)
-        starSprite.zPosition = 3
-        addChild(starSprite)
-        x += spriteSize + 4
+        let tomatoSprite = scene.pool.get(Cell.tomato)!
+        tomatoSprite.position = CGPoint(x: x, y: y)
+        tomatoSprite.zPosition = 3
+        addChild(tomatoSprite)
+        x += spriteSize + 8
 
         starCount.position = CGPoint(x: x, y: 8)
         starCount.fontColor = SKColor.whiteColor()
@@ -43,7 +43,7 @@ class Scoreboard: SKShapeNode {
         livesSprite.position = CGPoint(x: x, y: y)
         livesSprite.zPosition = 3
         addChild(livesSprite)
-        x += spriteSize + 4
+        x += spriteSize + 8
 
         lives.position = CGPoint(x: x, y: 8)
         lives.fontColor = SKColor.whiteColor()

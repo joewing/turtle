@@ -11,6 +11,7 @@ enum Cell: Character {
     case space = "."
     case player = "P"
     case brick = "X"
+    case tomato = "t"
     case star = "*"
     case ghost = "G"
     case tar = "T"
@@ -93,7 +94,7 @@ class Level {
 
     func isWall(t: Cell) -> Bool {
         switch t {
-        case Cell.space, Cell.star:
+        case Cell.space, Cell.star, Cell.tomato:
             return false
         default:
             return true

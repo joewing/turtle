@@ -20,7 +20,7 @@
 		C8BBF7851D299CF800449CB4 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BBF7841D299CF800449CB4 /* Agent.swift */; };
 		C8BBF7871D299E1C00449CB4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BBF7861D299E1C00449CB4 /* Player.swift */; };
 		C8BBF7891D29AFF700449CB4 /* SpritePool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BBF7881D29AFF700449CB4 /* SpritePool.swift */; };
-		C8E62CFA1D3866D100BA378A /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = C8E62CF91D3866D100BA378A /* level1.txt */; };
+		C8E62CFD1D38779D00BA378A /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = C8E62CFC1D38779D00BA378A /* level1.txt */; };
 		C8F21D711D3136BF003BC0D2 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F21D701D3136BF003BC0D2 /* Scoreboard.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +61,7 @@
 		C8BBF7841D299CF800449CB4 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		C8BBF7861D299E1C00449CB4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C8BBF7881D29AFF700449CB4 /* SpritePool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpritePool.swift; sourceTree = "<group>"; };
-		C8E62CF91D3866D100BA378A /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level1.txt; path = ../../../../level1.txt; sourceTree = "<group>"; };
+		C8E62CFC1D38779D00BA378A /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level1.txt; path = levels/level1.txt; sourceTree = "<group>"; };
 		C8F21D701D3136BF003BC0D2 /* Scoreboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +152,7 @@
 		C8E62CFB1D38672900BA378A /* levels */ = {
 			isa = PBXGroup;
 			children = (
-				C8E62CF91D3866D100BA378A /* level1.txt */,
+				C8E62CFC1D38779D00BA378A /* level1.txt */,
 			);
 			name = levels;
 			sourceTree = "<group>";
@@ -262,9 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8029C201D24942500BE4B43 /* Assets.xcassets in Resources */,
+				C8E62CFD1D38779D00BA378A /* level1.txt in Resources */,
 				C8029C1E1D24942500BE4B43 /* GameScene.sks in Resources */,
 				C8029C231D24942500BE4B43 /* MainMenu.xib in Resources */,
-				C8E62CFA1D3866D100BA378A /* level1.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

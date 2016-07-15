@@ -14,6 +14,7 @@ class Player: Agent {
     var stars = 0
     var lives = 8
     var die = false
+    var win = false
     var ticks: UInt64 = 0
 
     init(level: Level) {
@@ -35,14 +36,22 @@ class Player: Agent {
     override func touch(scene: GameScene, _ x: Int, _ y: Int) {
         let t = level.get(x, y)
         switch t {
-        case Cell.star:
+        case Cell.tomato:
             level.set(x, y, Cell.space)
             stars += 1
+        case Cell.star:
+            clear()
         case Cell.tar:
             kill()
         default:
             break
         }
+    }
+
+    func clear() {
+        win = true
+        posx = startx
+        posy = starty
     }
 
     func kill() {
@@ -64,6 +73,10 @@ class Player: Agent {
             } else {
                 scene.showBanner(CountDownBanner(scene: scene, text: "Lives: \(lives)"))
             }
+        } else if win {
+            win = false
+            moved = true
+            scene.showBanner(CountDownBanner(scene: scene, text: "Level Complete!"))
         }
         return moved
     }
