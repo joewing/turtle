@@ -28,7 +28,7 @@ class SpritePool {
         if filename != nil {
             let sprite = SKSpriteNode(imageNamed: filename!)
             sprite.size = CGSize(width: size, height: size)
-            sprite.zPosition = 1
+            sprite.zPosition = CELL_LAYER
             return sprite
         }
         return nil

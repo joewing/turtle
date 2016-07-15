@@ -10,6 +10,15 @@ import SpriteKit
 
 let spriteSize = 64
 
+typealias GameLayer = CGFloat
+let FIELD_LAYER: GameLayer = 0
+let SCOREBOARD_BASE_LAYER: GameLayer = 0
+let SCOREBOARD_CONTENT_LAYER: GameLayer = 1
+let CELL_LAYER: GameLayer = 1
+let AGENT_LAYER: GameLayer = 2
+let BANNER_BASE_LAYER: GameLayer = 3
+let BANNER_CONTENT_LAYER: GameLayer = 4
+
 class GameScene: SKScene {
 
     let pool = SpritePool(size: spriteSize)
@@ -62,7 +71,7 @@ class GameScene: SKScene {
         node.fillColor = NSColor(calibratedRed: 0.4, green: 0.5, blue: 0.9, alpha: 1)
         field = SKCropNode()
         field.maskNode = node
-        field.zPosition = 0
+        field.zPosition = FIELD_LAYER
         self.addChild(field)
     }
 

@@ -21,13 +21,13 @@ class Scoreboard: SKShapeNode {
         let rect = CGRect(x: 0, y: 0, width: width, height: height)
         path = CGPathCreateWithRect(rect, nil)
         fillColor = SKColor.blackColor()
-        zPosition = 2
+        zPosition = SCOREBOARD_BASE_LAYER
 
         var x = spriteSize / 2
         let y = spriteSize / 2
         let tomatoSprite = scene.pool.get(Cell.tomato)!
         tomatoSprite.position = CGPoint(x: x, y: y)
-        tomatoSprite.zPosition = 3
+        tomatoSprite.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(tomatoSprite)
         x += spriteSize + 8
 
@@ -35,13 +35,13 @@ class Scoreboard: SKShapeNode {
         starCount.fontColor = SKColor.whiteColor()
         starCount.fontSize = CGFloat(spriteSize - 4)
         starCount.fontName = "Courier"
-        starCount.zPosition = 3
+        starCount.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(starCount)
         x += spriteSize * 2
 
         let livesSprite = scene.pool.get(Cell.player)!
         livesSprite.position = CGPoint(x: x, y: y)
-        livesSprite.zPosition = 3
+        livesSprite.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(livesSprite)
         x += spriteSize + 8
 
@@ -49,7 +49,7 @@ class Scoreboard: SKShapeNode {
         lives.fontColor = SKColor.whiteColor()
         lives.fontSize = CGFloat(spriteSize - 4)
         lives.fontName = "Courier"
-        lives.zPosition = 3
+        lives.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(lives)
         x += spriteSize * 2
 
@@ -57,7 +57,7 @@ class Scoreboard: SKShapeNode {
         timer.fontColor = SKColor.whiteColor()
         timer.fontSize = CGFloat(spriteSize - 4)
         timer.fontName = "Courier"
-        timer.zPosition = 3
+        timer.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(timer)
     }
     

@@ -22,7 +22,7 @@ class Banner: SKShapeNode {
         path = CGPathCreateWithRect(rect, nil)
         fillColor = SKColor.blackColor()
         strokeColor = SKColor.whiteColor()
-        zPosition = 2
+        zPosition = BANNER_BASE_LAYER
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,13 +49,13 @@ class CountDownBanner: Banner {
         let rect = CGRect(x: x, y: y, width: width, height: CGFloat(spriteSize / 8))
         bar.path = CGPathCreateWithRect(rect, nil)
         bar.fillColor = SKColor.greenColor()
-        bar.zPosition = 3
+        bar.zPosition = BANNER_CONTENT_LAYER
         label.text = text
         label.fontColor = SKColor.whiteColor()
         label.fontSize = CGFloat(spriteSize)
         label.fontName = "Courier"
         label.position = CGPoint(x: x + width / 2, y: y + CGFloat(spriteSize))
-        label.zPosition = 3
+        label.zPosition = BANNER_CONTENT_LAYER
         addChild(label)
         addChild(bar)
     }
@@ -102,7 +102,7 @@ class GameOverBanner: Banner {
         label.fontSize = CGFloat(spriteSize)
         label.fontName = "Courier"
         label.position = CGPoint(x: x + width / 2, y: y + CGFloat(spriteSize))
-        label.zPosition = 3
+        label.zPosition = BANNER_CONTENT_LAYER
         addChild(label)
     }
 
