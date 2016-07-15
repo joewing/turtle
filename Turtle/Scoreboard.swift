@@ -25,7 +25,7 @@ class Scoreboard: SKShapeNode {
 
         var x = SPRITE_SIZE / 2
         let y = SPRITE_SIZE / 2
-        let tomatoSprite = scene.pool.get(Cell.tomato)!
+        let tomatoSprite = scene.pool.create(Cell.tomato)!
         tomatoSprite.position = CGPoint(x: x, y: y)
         tomatoSprite.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(tomatoSprite)
@@ -39,7 +39,7 @@ class Scoreboard: SKShapeNode {
         addChild(starCount)
         x += SPRITE_SIZE * 2
 
-        let livesSprite = scene.pool.get(Cell.player)!
+        let livesSprite = scene.pool.create(Cell.player)!
         livesSprite.position = CGPoint(x: x, y: y)
         livesSprite.zPosition = SCOREBOARD_CONTENT_LAYER
         addChild(livesSprite)

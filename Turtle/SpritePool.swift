@@ -18,12 +18,18 @@ class SpritePool {
         Cell.star: "star",
         Cell.tar: "tar",
     ]
+    private var used: [Cell: [SKSpriteNode]] = [:]
+    private var unused: [Cell: [SKSpriteNode]] = [:]
 
     init(size: Int) {
         self.size = size
+        for (t, _) in nameMap {
+            used[t] = []
+            unused[t] = []
+        }
     }
 
-    func get(t: Cell) -> SKSpriteNode? {
+    func create(t: Cell) -> SKSpriteNode? {
         let filename = nameMap[t]
         if filename != nil {
             let sprite = SKSpriteNode(imageNamed: filename!)
@@ -32,6 +38,25 @@ class SpritePool {
             return sprite
         }
         return nil
+    }
+
+    func get(t: Cell) -> SKSpriteNode? {
+        var sprite = unused[t]!.popLast()
+        if sprite == nil {
+            sprite = create(t)
+        }
+        if sprite == nil {
+            return nil
+        }
+        used[t]!.append(sprite!)
+        return sprite
+    }
+
+    func reset() {
+        for (t, v) in used {
+            unused[t]!.appendContentsOf(v)
+            used[t]!.removeAll(keepCapacity: true)
+        }
     }
 
 }

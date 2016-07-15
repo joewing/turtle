@@ -109,6 +109,7 @@ class GameScene: SKScene {
 
         // Render the new field.
         // We render 1 additional cell in each direction.
+        pool.reset()
         field.removeAllChildren()
         for y in -1...viewHeight {
             for x in -1...viewWidth + 1 {
