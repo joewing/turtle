@@ -16,6 +16,7 @@
 		C8029C391D24942600BE4B43 /* TurtleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8029C381D24942600BE4B43 /* TurtleUITests.swift */; };
 		C8029C471D24951200BE4B43 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8029C461D24951200BE4B43 /* Level.swift */; };
 		C80B92A31D35B4D000BFAAFA /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B92A21D35B4D000BFAAFA /* Banner.swift */; };
+		C8A5C8571D39C241002228CE /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = C8A5C8561D39C241002228CE /* level2.txt */; };
 		C8BBF7831D2966B700449CB4 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BBF7821D2966B700449CB4 /* Enemy.swift */; };
 		C8BBF7851D299CF800449CB4 /* Agent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BBF7841D299CF800449CB4 /* Agent.swift */; };
 		C8BBF7871D299E1C00449CB4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BBF7861D299E1C00449CB4 /* Player.swift */; };
@@ -57,6 +58,7 @@
 		C8029C3A1D24942600BE4B43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8029C461D24951200BE4B43 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		C80B92A21D35B4D000BFAAFA /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
+		C8A5C8561D39C241002228CE /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level2.txt; path = levels/level2.txt; sourceTree = "<group>"; };
 		C8BBF7821D2966B700449CB4 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		C8BBF7841D299CF800449CB4 /* Agent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agent.swift; sourceTree = "<group>"; };
 		C8BBF7861D299E1C00449CB4 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				C8E62CFC1D38779D00BA378A /* level1.txt */,
+				C8A5C8561D39C241002228CE /* level2.txt */,
 			);
 			name = levels;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8A5C8571D39C241002228CE /* level2.txt in Resources */,
 				C8029C201D24942500BE4B43 /* Assets.xcassets in Resources */,
 				C8E62CFD1D38779D00BA378A /* level1.txt in Resources */,
 				C8029C1E1D24942500BE4B43 /* GameScene.sks in Resources */,

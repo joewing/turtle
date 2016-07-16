@@ -70,7 +70,7 @@ class CountDownBanner: Banner {
             let x = CGRectGetMinX(self.frame)
             let y = CGRectGetMinY(self.frame)
             let rect = CGRect(x: x, y: y,
-                              width: CGFloat(width * counter / LevelBanner.counterStart),
+                              width: CGFloat(width * counter / CountDownBanner.counterStart),
                               height: CGFloat(SPRITE_SIZE / 8))
             bar.path = CGPathCreateWithRect(rect, nil)
             return true
@@ -80,13 +80,27 @@ class CountDownBanner: Banner {
     }
 }
 
-class LevelBanner: CountDownBanner {
-    init(scene: GameScene, level: Int) {
-        super.init(scene: scene, text: "Level \(level)")
+class WinnerBanner: Banner {
+    override init(scene: GameScene) {
+        super.init(scene: scene)
+        let width = CGRectGetWidth(self.frame)
+        let x = CGRectGetMinX(self.frame)
+        let y = CGRectGetMinY(self.frame)
+        let label = SKLabelNode(text: "You Win!")
+        label.fontColor = SKColor.whiteColor()
+        label.fontSize = FONT_SIZE
+        label.fontName = FONT_NAME
+        label.position = CGPoint(x: x + width / 2, y: y + CGFloat(SPRITE_SIZE))
+        label.zPosition = BANNER_CONTENT_LAYER
+        addChild(label)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func update() -> Bool {
+        return true
     }
 }
 

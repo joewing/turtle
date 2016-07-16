@@ -74,9 +74,9 @@ class Player: Agent {
                 scene.showBanner(CountDownBanner(scene: scene, text: "Lives: \(lives)"))
             }
         } else if win {
+            scene.nextLevel()
             win = false
             moved = true
-            scene.showBanner(CountDownBanner(scene: scene, text: "Level Complete!"))
         }
         return moved
     }

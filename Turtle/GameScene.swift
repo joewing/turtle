@@ -21,11 +21,17 @@ let AGENT_LAYER: GameLayer = 2
 let BANNER_BASE_LAYER: GameLayer = 3
 let BANNER_CONTENT_LAYER: GameLayer = 4
 
+let LEVELS = [
+    "level1",
+    "level2",
+]
+
 class GameScene: SKScene {
 
     let pool = SpritePool(size: SPRITE_SIZE)
     private var scoreboard: Scoreboard!
     private var field: SKCropNode!
+    private var levelIndex: Int = 0
     private var level: Level!
     private var viewx: Int = 0
     private var viewy: Int = 0
@@ -36,27 +42,39 @@ class GameScene: SKScene {
     private var banner: Banner?
 
     override func didMoveToView(view: SKView) {
+        initField()
+        initScore()
         reset()
     }
 
     private func reset() {
-        initField()
-        initScore()
-        level = Level(filename: "level1")
+        level = Level(filename: LEVELS[levelIndex])
         player = Player(level: level)
-        field.addChild(player.sprite())
+        agents = []
         for (x, y) in level.getAgents() {
             let agent = Enemy(level: level, player: player, x: x, y: y)
-            field.addChild(agent.sprite())
             agents.append(agent)
         }
         viewx = 0
         viewy = 0
         render()
-        showBanner(LevelBanner(scene: self, level: 1))
+        if levelIndex == 0 {
+            showBanner(CountDownBanner(scene: self, text: "Get Ready!"))
+        } else {
+            showBanner(CountDownBanner(scene: self, text: "Level Complete!"))
+        }
     }
 
-    func showBanner(banner: Banner) {
+    final func nextLevel() {
+        levelIndex += 1
+        if levelIndex == LEVELS.count {
+            showBanner(WinnerBanner(scene: self))
+        } else {
+            reset()
+        }
+    }
+
+    final func showBanner(banner: Banner) {
         if self.banner != nil {
             self.banner!.removeFromParent()
         }
@@ -121,6 +139,8 @@ class GameScene: SKScene {
         for agent in agents {
             renderAgent(agent)
         }
+
+        scoreboard.update(player)
     }
 
     private func renderCell(x: Int, _ y: Int) {
@@ -210,7 +230,6 @@ class GameScene: SKScene {
                 }
             }
             if moved && banner == nil {
-                scoreboard.update(player)
                 render()
             }
         }
