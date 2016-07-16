@@ -23,8 +23,11 @@ class Level {
     private var playerx: Int = 0
     private var playery: Int = 0
     private var agents: [(Int, Int)] = []
+    let id: Int
 
-    init(filename: String) {
+    init(id: Int) {
+        self.id = id
+        let filename = "level\(id)"
         do {
             let bundle = NSBundle.mainBundle()
             let path = bundle.pathForResource(filename, ofType: "txt")

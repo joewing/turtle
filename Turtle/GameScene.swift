@@ -21,17 +21,14 @@ let AGENT_LAYER: GameLayer = 2
 let BANNER_BASE_LAYER: GameLayer = 3
 let BANNER_CONTENT_LAYER: GameLayer = 4
 
-let LEVELS = [
-    "level1",
-    "level2",
-]
+let LEVEL_COUNT = 2
 
 class GameScene: SKScene {
 
     let pool = SpritePool(size: SPRITE_SIZE)
     private var scoreboard: Scoreboard!
     private var field: SKCropNode!
-    private var levelIndex: Int = 0
+    private var levelId: Int = 1
     private var level: Level!
     private var viewx: Int = 0
     private var viewy: Int = 0
@@ -49,7 +46,7 @@ class GameScene: SKScene {
     }
 
     private func reset() {
-        level = Level(filename: LEVELS[levelIndex])
+        level = Level(id: levelId)
         player.reset(level)
         agents = []
         for (x, y) in level.getAgents() {
@@ -60,7 +57,7 @@ class GameScene: SKScene {
         viewx = 0
         viewy = 0
         render()
-        if levelIndex == 0 {
+        if levelId == 1 {
             showBanner(CountDownBanner(scene: self, text: "Get Ready!"))
         } else {
             showBanner(CountDownBanner(scene: self, text: "Level Complete!"))
@@ -68,8 +65,8 @@ class GameScene: SKScene {
     }
 
     final func nextLevel() {
-        levelIndex += 1
-        if levelIndex == LEVELS.count {
+        levelId += 1
+        if levelId > LEVEL_COUNT {
             showBanner(WinnerBanner(scene: self))
         } else {
             reset()
