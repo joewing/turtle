@@ -9,21 +9,21 @@
 class Player: Agent {
 
     private let imageNames = ["turtle1", "turtle2", "turtle3"]
-    private let startx: Int
-    private let starty: Int
     var stars = 0
     var lives = 8
     var die = false
     var win = false
     var ticks: UInt64 = 0
 
-    init(level: Level) {
+    init() {
+        super.init(imageNames: imageNames, posx: 0, posy: 0)
+    }
+
+    override func reset(level: Level) {
+        super.reset(level)
         let (x, y) = level.findPlayer()
-        let posx = x * SPRITE_SIZE
-        let posy = y * SPRITE_SIZE
-        startx = posx
-        starty = posy
-        super.init(level: level, imageNames: imageNames, posx: posx, posy: posy)
+        posx = x * SPRITE_SIZE
+        posy = y * SPRITE_SIZE
     }
 
     override func hit(scene: GameScene, _ x: Int, _ y: Int) {
@@ -50,14 +50,13 @@ class Player: Agent {
 
     func clear() {
         win = true
-        posx = startx
-        posy = starty
     }
 
     func kill() {
         die = true
-        posx = startx
-        posy = starty
+        let (x, y) = level.findPlayer()
+        posx = x * SPRITE_SIZE
+        posy = y * SPRITE_SIZE
     }
 
     override func update(scene: GameScene) -> Bool {

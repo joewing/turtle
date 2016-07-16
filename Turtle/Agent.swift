@@ -14,7 +14,7 @@ class Agent {
     private let speedy = 16
     private let jumpSize = 12
 
-    let level: Level
+    var level: Level!
     var sprites: [SKSpriteNode] = []
     var spriteIndex = 0
     var posx: Int
@@ -22,8 +22,7 @@ class Agent {
     var vx: Int = 0
     var jumpCounter: Int = 0
 
-    init(level: Level, imageNames: [String], posx: Int, posy: Int) {
-        self.level = level
+    init(imageNames: [String], posx: Int, posy: Int) {
         self.posx = posx
         self.posy = posy
         for name in imageNames {
@@ -49,7 +48,8 @@ class Agent {
         return sprites[spriteIndex]
     }
 
-    final func reset() {
+    func reset(level: Level) {
+        self.level = level
         jumpCounter = 0
         vx = 0
         spriteIndex = 0

@@ -44,15 +44,17 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         initField()
         initScore()
+        player = Player()
         reset()
     }
 
     private func reset() {
         level = Level(filename: LEVELS[levelIndex])
-        player = Player(level: level)
+        player.reset(level)
         agents = []
         for (x, y) in level.getAgents() {
-            let agent = Enemy(level: level, player: player, x: x, y: y)
+            let agent = Enemy(player: player, x: x, y: y)
+            agent.reset(level)
             agents.append(agent)
         }
         viewx = 0
@@ -216,7 +218,7 @@ class GameScene: SKScene {
                     if !banner!.update() {
                         banner!.removeFromParent()
                         banner = nil
-                        player.reset()
+                        player.reset(level)
                     }
                 } else {
                     if player.update(self) {

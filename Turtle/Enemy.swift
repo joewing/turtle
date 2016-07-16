@@ -13,11 +13,11 @@ class Enemy: Agent {
     private var direction = 1
     private let player: Player
 
-    init(level: Level, player: Player, x: Int, y: Int) {
+    init(player: Player, x: Int, y: Int) {
         self.player = player
         let posx = x * SPRITE_SIZE
         let posy = y * SPRITE_SIZE
-        super.init(level: level, imageNames:["ghost"], posx: posx, posy: posy)
+        super.init(imageNames:["ghost"], posx: posx, posy: posy)
     }
 
     override func touch(scene: GameScene, _ x: Int, _ y: Int) {
