@@ -196,6 +196,7 @@ class GameScene: SKScene {
                     if !banner!.update() {
                         banner!.removeFromParent()
                         banner = nil
+                        player.reset()
                     }
                 } else {
                     if player.update(self) {

@@ -49,6 +49,12 @@ class Agent {
         return sprites[spriteIndex]
     }
 
+    final func reset() {
+        jumpCounter = 0
+        vx = 0
+        spriteIndex = 0
+    }
+
     final func jump() {
         // Must be on the ground to jump.
         let absx1 = posx / SPRITE_SIZE
@@ -56,7 +62,7 @@ class Agent {
         let absy = (posy / SPRITE_SIZE) + 1
         let t1 = level.get(absx1, absy)
         let t2 = level.get(absx2, absy)
-        if t1 != Cell.space || t2 != Cell.space {
+        if level.isWall(t1) || level.isWall(t2) {
             jumpCounter = jumpSize
         }
     }

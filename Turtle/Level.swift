@@ -94,7 +94,7 @@ class Level {
 
     func isWall(t: Cell) -> Bool {
         switch t {
-        case Cell.space, Cell.star, Cell.tomato:
+        case Cell.space, Cell.star, Cell.tomato, Cell.tar:
             return false
         default:
             return true
