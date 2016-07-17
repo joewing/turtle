@@ -62,7 +62,7 @@ class Agent {
         let absy = (posy / SPRITE_SIZE) + 1
         let t1 = level.get(absx1, absy)
         let t2 = level.get(absx2, absy)
-        if level.isWall(t1) || level.isWall(t2) {
+        if Level.isWall(t1) || Level.isWall(t2) {
             jumpCounter = jumpSize
         }
     }
@@ -92,7 +92,7 @@ class Agent {
             let absy2 = (posy + SPRITE_SIZE - 1) / SPRITE_SIZE
             let t1 = level.get(absx, absy1)
             let t2 = level.get(absx, absy2)
-            if !level.isWall(t1) && !level.isWall(t2) {
+            if !Level.isWall(t1) && !Level.isWall(t2) {
                 posx = nextx
                 moved = true
             }
@@ -116,7 +116,7 @@ class Agent {
             let absy = nexty / SPRITE_SIZE
             let t1 = level.get(absx1, absy)
             let t2 = level.get(absx2, absy)
-            if !level.isWall(t1) && !level.isWall(t2) {
+            if !Level.isWall(t1) && !Level.isWall(t2) {
                 jumpCounter -= 1
                 posy = nexty
                 moved = true
@@ -137,7 +137,7 @@ class Agent {
             let absy = (nexty + SPRITE_SIZE - 1) / SPRITE_SIZE
             let t1 = level.get(absx1, absy)
             let t2 = level.get(absx2, absy)
-            if !level.isWall(t1) && !level.isWall(t2) {
+            if !Level.isWall(t1) && !Level.isWall(t2) {
                 posy = nexty
                 moved = true
             }

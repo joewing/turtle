@@ -95,7 +95,7 @@ class Level {
         return data.count;
     }
 
-    func isWall(t: Cell) -> Bool {
+    static func isWall(t: Cell) -> Bool {
         switch t {
         case Cell.space, Cell.star, Cell.tomato, Cell.tar:
             return false
